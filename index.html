@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>'Page Title'</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+
+
+    <div class="header"><h1>KOMPUTER STORE</h1></div>
+    
+        <div class="maingrid">   
+
+            <div class ="bank"> 
+                <h2>Bank</h2>
+                <div id="bankBalance">Balance 0€</div>
+                <div id ="loanAmount"></div>
+                <button onclick="getLoan()">Get a loan</button>
+            </div>
+
+            <div class ="work">
+                <h2>Work</h2>             
+                <div id ="payBalance">Pay 0€</div>
+                <button onclick="transferToBank()">Bank</button><br>
+                <button onclick="increasePay()">Work</button><br>
+                <button id="payBackButton" onclick="payBackLoan()">Pay back loan</button>                
+            </div>
+
+
+            <div class = "laptop">
+                <h2>Laptops</h2>             
+                <label for="laptops">Choose a laptop:</label>
+                <select name="laptop" id= "laptops" onchange="selectLaptop()">
+                    <option value="Empty">Select...</option>
+                    <option value="Apple">Apple laptop</option>
+                    <option value="Chromebook">Chromebook laptop</option>
+                    <option value="Intel">Intel laptop</option>
+                    <option value="AMD">AMD Laptop</option>                
+                </select>            
+                <div id="laptopFeatures">Features: </div> 
+            </div>
+        
+            <div class ="laptopinfo"> 
+
+                <div id="laptopName"></div>      
+                <div id="laptopPrice"></div>   
+                <div id="laptopDescrpition"></div>
+                <div><img id="laptopPic" src="" height="100px" width="150px"></div>
+                <button onclick="buyLaptop()">Buy</button>
+            </div>  
+        </div>
+    
+    
+   
+</body>
+</html>

@@ -1,0 +1,103 @@
+h2{
+    font-size: 23px; 
+}
+.maingrid {               
+    display: grid;    
+    grid-template-columns: repeat(3, 1fr);    
+    padding-left: 100px;
+    padding-right: 100px;
+    font-size: 1.2em;    
+    font-family:'Courier New'; 
+    align-content: space-between;     
+    text-transform: uppercase;
+}
+
+
+.bank{   
+    margin: 20px;
+    padding: 20px;
+    background-color:lightblue; 
+    border-radius: 10px;          
+}
+
+.bank > * {
+    margin-left: 50px;
+    margin-bottom: 15px;
+}
+
+
+.work{
+    margin: 20px;
+    padding: 20px;
+    background-color:lightcoral;
+    border-radius: 10px;     
+}
+
+.work > * {
+    margin-left: 50px;
+    margin-bottom: 15px;
+}
+
+.laptop{   
+    margin: 20px;
+    padding: 20px;
+    background-color:lightgreen;
+    border-radius: 10px;   
+}
+
+.laptop > * {
+    margin-left: 50px;
+    margin-bottom: 15px;
+}
+
+.laptopinfo {    
+    margin: 20px;
+    padding: 20px;
+    background-color:lightseagreen; 
+    border-radius: 10px;  
+}
+
+.laptopinfo > * {
+    margin-left: 50px;
+    margin-bottom: 15px;
+}
+
+
+@media (max-width: 1100px) {
+    .maingrid {
+      display: flex;
+      flex-direction: column;
+      overflow: scroll;
+    }
+  }
+
+  @media (max-height: 700px) {
+    .maingrid {
+      display: flex;
+      flex-direction: column;
+      overflow: scroll;
+    }
+  }
+
+  .header {
+    padding: 8px;
+    text-align: left;
+    background: black;
+    color: white;
+    font-size: 17px;
+    font-family: Helvetica;
+    font-variant: small-caps;
+    text-align: center;    
+  }
+
+
+button{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 15px;    
+}
+
+
+button#payBackButton{
+    visibility: hidden;
+}
