@@ -1,3 +1,4 @@
+//objects for different laptops
 const laptopSpecs = {
   "Apple": {
       "features": "Siri voice agent, new M1 CPU",
@@ -37,11 +38,13 @@ const person = {
   hasLoan: false
 }
 
+//a function for buying a laptop
 function buyLaptop() {
-  console.log("buylaptop");
+  //get the laptops price
   let laptopname = document.getElementById("laptops").value;
   let results = laptopSpecs[laptopname];
   let price = results.price;
+  //if user has enough money, buy the laptop and update values
   if (person.bankBalance >= price) {
       alert("Bought the laptop, enjoy!");
       person.bankBalance -= price;
@@ -51,6 +54,8 @@ function buyLaptop() {
   }
 }
 
+//function for Selecting a laptop from the select menu.
+//Updates html elements according to the laptops specs.
 function selectLaptop() {
   let laptopname = document.getElementById("laptops").value;
   let results = laptopSpecs[laptopname];
@@ -59,20 +64,23 @@ function selectLaptop() {
   document.getElementById("laptopPrice").innerHTML = "price: " + results.price + "<br />";
   document.getElementById("laptopDescrpition").innerHTML = "description: " + results.description;
   document.getElementById("laptopPic").src = results.imgsrc;
-
 }
 
+//function for 'work' button. Increase pay amount by 100.
 function increasePay() {
   person.payBalance = person.payBalance + 100;
   document.getElementById("payBalance").innerHTML = "Pay " + person.payBalance + "€";
 }
 
+//function for transfering money to bank.
 function transferToBank() {
+  //check if person has a loan, if so 10% of the pay goes into paying back the loan
   if (person.hasLoan) {
       let deduction = person.payBalance * 0.1;
       person.loanAmount -= deduction;
       person.bankBalance += person.payBalance * 0.9;
       person.payBalance = 0;
+      //if the loan is paid off add the overflown loan amount back to bank balance.
       if (person.loanAmount < 0) {
           person.bankBalance += (person.loanAmount * -1);
           person.loanAmount = 0;
@@ -81,6 +89,7 @@ function transferToBank() {
       document.getElementById("bankBalance").innerHTML = "Balance " + person.bankBalance + "€";
       document.getElementById("payBalance").innerHTML = "Pay " + person.payBalance + "€";
       document.getElementById("loanAmount").innerHTML = "You owe " + person.loanAmount + "€";
+  //if no active loan just update bank balance
   } else {
       person.bankBalance += person.payBalance;
       person.payBalance = 0;
@@ -89,6 +98,7 @@ function transferToBank() {
   }
 }
 
+//function for getting a loan. Prompt user for loan amount and check if a loan can be given.
 function getLoan() {
   var loanAmount = prompt("Enter loan amount");
   loanAmount = parseInt(loanAmount, 10);
@@ -100,20 +110,21 @@ function getLoan() {
       person.bankBalance += loanAmount;
       document.getElementById("bankBalance").innerHTML = "Balance " + person.bankBalance + "€";
       document.getElementById("loanAmount").innerHTML = "You owe " + loanAmount + "€";
+      //set payback loan button visible if a loan was given
       document.getElementById("payBackButton").style.visibility = "visible";
-
   }
 }
 
+//function for paying back the loan without depositing to the bank account.
 function payBackLoan() {
+  //if the loan is smaller than users pay balance -- pay back the loan and keep the rest in pay balance.
   if (person.loanAmount <= person.payBalance) {
       person.payBalance -= person.loanAmount;
       person.loanAmount = 0;
       person.hasLoan = false;
-      document.getElementById("payBalance").innerHTML = "Pay " + person.payBalance + "€";
-      document.getElementById("loanAmount").innerHTML = "You owe " + person.loanAmount + "€";
+      document.getElementById("payBalance").innerHTML = "Pay " + person.payBalance + "€";      
+      document.getElementById("loanAmount").innerHTML = "You owe " + person.loanAmount + "€";      
       document.getElementById("payBackButton").style.visibility = "hidden";
-
   } else {
       person.loanAmount -= person.payBalance;
       person.payBalance = 0;
